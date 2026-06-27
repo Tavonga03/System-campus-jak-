@@ -1,7 +1,3 @@
-# System-campus-jak-
-A console-based Java CLI application simulating a campus integrated service platform. Students can order transportation, food, and document printing services through an interactive menu. Orders are tracked in a daily history, saved to JSON, and printed as a final receipt.
-
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/y0V6Mx5M)
 
 # Campus-Jek — Integrated Campus Service Platform
 
@@ -35,6 +31,32 @@ Campus-Jek acts as a lightweight on-campus service aggregator. When a student la
 - Save student profile and order history to a JSON file in the `data/` folder.
 - Automatically reload previous history when the same student ID is entered again.
 - Print a final payment receipt showing all orders and the total bill for the day.
+
+---
+
+## What Has Been Implemented
+
+### OOP Concepts
+- **Inheritance** — `Transportasi`, `Makanan`, and `CetakTugas` all extend a shared `Layanan` base class, inheriting common attributes like service name and fare.
+- **Encapsulation** — all class fields are private and accessed through getters and setters, keeping internal data protected from direct modification.
+- **Polymorphism** — the `RiwayatHarian` list stores all orders as `Layanan` objects, allowing different service types to be handled through a single unified interface.
+- **Abstraction** — `Layanan` defines the contract (e.g. `hitungTarif()`) that every service subclass must implement in its own way.
+
+### Data & Storage
+- **`Mahasiswa`** — stores the student's name, ID, and their `RiwayatHarian` for the session.
+- **`RiwayatHarian`** — holds a `List<Layanan>` that accumulates all orders placed during a session.
+- **JSON persistence** — student profiles and order histories are written to and read from JSON files in the `data/` folder using a `DataManager` class.
+- **Session continuity** — when a student ID is entered, the program checks for an existing JSON file and restores the previous session's data automatically.
+
+### Service Logic
+- **Transportasi** — calculates fare based on distance to the destination.
+- **Makanan** — calculates fare based on the food items ordered.
+- **CetakTugas** — calculates fare based on the number of pages to be printed.
+
+### CLI & UX
+- **Main menu** — presents all available services and navigates to submenus.
+- **History submenu** — lets students view all orders or filter by service category.
+- **Receipt** — prints a formatted end-of-session summary with every order and the grand total.
 
 ---
 
